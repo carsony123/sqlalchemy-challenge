@@ -8,7 +8,7 @@ from sqlalchemy.ext.automap import automap_base
 from flask import Flask, jsonify
 
 # Database setup
-engine = create_engine("sqlite:///Resources/hawaii.sqlite")
+engine = create_engine("sqlite:////Resources/hawaii.sqlite")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 Measurement = Base.classes.measurement
