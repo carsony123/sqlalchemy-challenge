@@ -21,7 +21,7 @@ app = Flask(__name__)
 # Flask routes
 @app.route("/")
 def home():
-    # List all available api routes.
+    # List all available api routes
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/precipitation<br/>"
@@ -33,7 +33,7 @@ def home():
 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
-    # Return the precipitation data for the last 12 months.
+    # Return the precipitation data for the last 12 months
     last_year_date = dt.date(2017, 8, 23) - dt.timedelta(days=365)
     precipitation_data = (
         session.query(Measurement.date, Measurement.prcp)
@@ -48,7 +48,7 @@ def precipitation():
 
 @app.route("/api/v1.0/stations")
 def stations():
-    # Return a list of stations from the dataset.
+    # Return a list of stations from the dataset
     station_data = session.query(Station.name, Station.station).all()
     station_list = []
     for result in station_data:
@@ -57,7 +57,7 @@ def stations():
 
 @app.route("/api/v1.0/tobs")
 def tobs():
-    # Return the temperature observation data for the most active station for the last 12 months.
+    # Return the temperature observation data for the most active station for the last 12 months
     last_year_date = dt.date(2017, 8, 23) - dt.timedelta(days=365)
     most_active_station = (
         session.query(Measurement.station, func.count(Measurement.station))
